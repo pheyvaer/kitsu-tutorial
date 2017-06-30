@@ -41,7 +41,7 @@ Let's take my username `piehey` as an example.
 That would give `https://kitsu.io/api/edge/users?filter[name]=piehey`.
 The JSON response of the call looks like this in my case:
 
-```JSON
+```
 {
   "data": [
     {
