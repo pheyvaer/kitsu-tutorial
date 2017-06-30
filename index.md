@@ -26,3 +26,37 @@ These are the different steps of this tutorial.
 3. Interpret the information of each library entry.
 4. Get the information about the Anime for each entry.
 5. Get the Kitsu website link for each Anime.
+
+### Get user's `id`
+
+The `id` of a user can be retreived based on the user's username (referred to as `name`).
+The following API call gives the details about a user with username `<usersname>`:
+`https://kitsu.io/api/edge/users?filter[name]=<username>`
+
+What happens here exactly? Well, `https://kitsu.io/api/edge/users` refers to all users.
+With `?filter[name]=<username>`, you apply a filter on all users to get only the user with username `<username>`.
+Note that you can filter on every element of a `user` object.
+
+Let's take my username `piehey` as an example.
+That would give `https://kitsu.io/api/edge/users?filter[name]=piehey`.
+The JSON response of the call looks like this in my case:
+
+```JSON
+{
+  "data": [
+    {
+      "attributes": {}, 
+      "id": "142706", 
+      "links": {}, 
+      "relationships": {}, 
+      "type": "users"
+    }
+  ], 
+  "links": {}, 
+  "meta": {
+    "count": 1
+  }
+}
+```
+
+The `id` of the user can be retreived from the response via `data[0].id`, which is in our example `142706`.
