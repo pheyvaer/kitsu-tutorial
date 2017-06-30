@@ -105,4 +105,4 @@ However, only 10 entries are given in this reponse, as the API uses [pagination]
 The differenct pages are available via `$.links`.
 The next 10 entries are retreived by doing a call to the URL in `$.next`.
 The URL has an `offset` of 10, which means that the next page starts with entry 10.
-You can customize the number of entries per page via the `limit` property as explained in the [doucmentation](http://docs.kitsu.apiary.io/#introduction/json-api/pagination).
+You can customize the number of entries per page via the `limit` property as explained in the [documentation](http://docs.kitsu.apiary.io/#introduction/json-api/pagination).
