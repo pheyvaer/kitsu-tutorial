@@ -27,10 +27,10 @@ These are the different steps of this tutorial.
 4. Get the information about the Anime for each entry.
 5. Get the Kitsu website link for each Anime.
 
-### Get user's `id`
+### 1. Get user's `id`
 
 The `id` of a user can be retreived based on the user's username (referred to as `name`).
-The following API call gives the details about a user with username `<usersname>`:
+The following API GET call gives the details about a user with username `<usersname>`:
 `https://kitsu.io/api/edge/users?filter[name]=<username>`
 
 What happens here exactly? Well, `https://kitsu.io/api/edge/users` refers to all users.
@@ -45,18 +45,57 @@ The JSON response of the call looks like this in my case:
 {
   "data": [
     {
-      "attributes": {}, 
+      "attributes": {...}, 
       "id": "142706", 
-      "links": {}, 
-      "relationships": {}, 
+      "links": {...}, 
+      "relationships": {...}, 
       "type": "users"
     }
   ], 
-  "links": {}, 
+  "links": {...}, 
   "meta": {
     "count": 1
   }
 }
 ```
-
 The `id` of the user can be retreived from the response via `data[0].id`, which is in our example `142706`.
+
+### 2. Get library entries of user
+
+The different library entries of a specific user can be retreived via the user's `id`. The GET call looks like this: `https://kitsu.io/api/edge/users/<id>/library-entries`, where `<id>` is the `id` of the user.
+
+In our example the call looks like `https://kitsu.io/api/edge/users/142706/library-entries`.
+The response is
+```
+{
+  "data": [
+    {
+      "attributes": {...}, 
+      "id": "17602358", 
+      "links": {...}, 
+      "relationships": {
+        "anime": {...}, 
+        "drama": {...}, 
+        "manga": {...}, 
+        "media": {...}, 
+        "mediaReaction": {...}, 
+        "nextUnit": {...}, 
+        "review": {...}, 
+        "unit": {...}, 
+        "user": {...}
+      }, 
+      "type": "libraryEntries"
+    }, 
+    ...
+  ], 
+  "links": {
+    "first": "https://kitsu.io/api/edge/users/142706/library-entries?page%5Blimit%5D=10&page%5Boffset%5D=0", 
+    "last": "https://kitsu.io/api/edge/users/142706/library-entries?page%5Blimit%5D=10&page%5Boffset%5D=30", 
+    "next": "https://kitsu.io/api/edge/users/142706/library-entries?page%5Blimit%5D=10&page%5Boffset%5D=10"
+  }, 
+  "meta": {
+    "count": 40
+  }
+}
+
+```
