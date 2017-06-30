@@ -19,7 +19,7 @@ Note that the explanations will be about getting the required data from the API 
 
 ## Steps
 
-This are the different steps of this tutorial.
+These are the different steps of this tutorial.
 
 1. Get the `id` of a user based on his/her `username`.
 2. Get the library entries of a user.
