@@ -15,6 +15,7 @@ We focus on three elements
 - [Anime series](http://docs.kitsu.apiary.io/#reference/media/anime).
 
 We are using the latest API available [https://kitsu.io/api/edge/](https://kitsu.io/api/edge/) at the time of writing (30/06/2017).
+Note that, the explanations will be about getting the required data from the API and not about how to, e.g., visualize the data.
 
 ## Steps
 
