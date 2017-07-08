@@ -134,7 +134,7 @@ You can find an example below.
     "rating": "0.0",
     "ratingTwenty": null
   },
-  "relationships": {}
+  "relationships": {...}
 }
 ```
 
@@ -165,7 +165,69 @@ A part of this object of our example looks like this.
 ```
 `user` refers to the user to which this library entry belongs.
 `anime` refers to the anime that is part of this entry.
+Other relationships are also present, but we wont discuss them here.
+More specific, we are focussing on anime here; however, other media, such as manga can also be part of a library entry.
 
-Note that we are focussing on anime here; however, other media, such as manga can also be part of a library entry.
+The `anime` object has a number of links.
+The `self` link refers to the relationships itself, while the `related` link points to the actual anime.
+
+When we do a GET call to this link, we get the following result.
+```
+{
+    "data": {
+        "id": "12757",
+        "type": "anime",
+        "links": {
+            "self": "https://kitsu.io/api/edge/anime/12757"
+        },
+        "attributes": {
+            "createdAt": "2016-11-20T07:06:44.960Z",
+            "updatedAt": "2017-07-08T11:21:51.581Z",
+            "slug": "netsuzou-trap",
+            "synopsis": "Yuma and Hotaru have been friends since childhood, so it's only natural that when Yuma is nervous about her new boyfriend, she asks Hotaru for advice. But when Hotaru starts coming onto Yuma for what feels like more than just 'practice', what does it mean...? With boyfriends in the foreground but a secret, passionate tryst in the background, will Yuma and Hotaru try to forget what happened between them or have they fallen into a trap of true love and betrayal?\r\n\r\n(Source: Seven Seas)",
+            "coverImageTopOffset": 0,
+            "titles": {
+                "en": "NTR: Netsuzou Trap",
+                "en_jp": "Netsuzou TRap",
+                "ja_jp": "捏造トラップ―NTR―"
+            },
+            "canonicalTitle": "Netsuzou TRap",
+            "abbreviatedTitles": null,
+            "averageRating": null,
+            "ratingFrequencies": {...},
+            "userCount": 646,
+            "favoritesCount": 0,
+            "startDate": "2017-07-05",
+            "endDate": null,
+            "popularityRank": 3460,
+            "ratingRank": null,
+            "ageRating": null,
+            "ageRatingGuide": "",
+            "subtype": "TV",
+            "status": "current",
+            "posterImage": {...},
+            "coverImage": null,
+            "episodeCount": 12,
+            "episodeLength": 10,
+            "youtubeVideoId": "3UUs23olVOI",
+            "showType": "TV",
+            "nsfw": false
+        },
+        "relationships": {...}
+
+}
+```
+
+As you can see a lot of information is available, but for now we only want to retreive the title of the anime.
+The titles of the anime are available in `data.attributes.titles`.
+```
+"titles": {
+    "en": "NTR: Netsuzou Trap",
+    "en_jp": "Netsuzou TRap",
+    "ja_jp": "捏造トラップ―NTR―"
+}
+```
+Three titles are available for this specific anime.
+You can choose between the English one 'NTR: Netsuzou Trap', the Japanese one '捏造トラップ―NTR―', or the English/Japanese one 'Netsuzou TRap'.
 
 ### 5. Get the Kitsu website link for each Anime.
