@@ -238,7 +238,7 @@ The slug of an anime has to be added to get the full link.
 The slug can be found via `data.attributes.slug`.
 For our example, the slug is 'netsuzou-trap', which results in the link `https://kitsu.io/anime/netsuzou-trap`.
 
-## Recap
+## Conclusion
 
 In this tutorial we briefly touched upon a few of the different aspects of the Kitsu API.
 More options are available, so make sure to have a look at the documentation.
