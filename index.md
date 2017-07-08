@@ -1,18 +1,18 @@
 # You and your Kitsu Anime library
 
-This tutorial guides you through to the core elements of how you can access your [Kitsu](https://kitsu.io) Anime library.
+This tutorial guides you through to the core elements of how you can access your [Kitsu](https://kitsu.io) anime library.
 We will have a look at the different elements of the [Kitsu API](http://docs.kitsu.apiary.io) and how they can provide you with the data needed to build your application.
 
 ## Goal
 
-The goal is to build an application that shows the library entries of a specific user, together with the information about the Anime for each entry. Additionally, we provide links to the Anime on the Kitsu website.
+The goal is to build an application that shows the library entries of a specific user, together with the information about the anime for each entry. Additionally, we provide links to the anime on the Kitsu website.
 
 ## Focus
 
 We focus on three elements
 - [users](http://docs.kitsu.apiary.io/#reference/users),
 - [libraries](http://docs.kitsu.apiary.io/#reference/user-libraries), and
-- [Anime series](http://docs.kitsu.apiary.io/#reference/media/anime).
+- [anime series](http://docs.kitsu.apiary.io/#reference/media/anime).
 
 We are using the latest API available [https://kitsu.io/api/edge/](https://kitsu.io/api/edge/) at the time of writing (30/06/2017).
 Note that the explanations will be about getting the required data from the API and not about how to, e.g., visualize the data.
@@ -24,8 +24,8 @@ These are the different steps of this tutorial.
 1. Get the `id` of a user based on his/her `username`.
 2. Get the library entries of a user.
 3. Interpret the information of each library entry.
-4. Get the information about the Anime for each entry.
-5. Get the Kitsu website link for each Anime.
+4. Get the information about the anime for each entry.
+5. Get the Kitsu website link for each anime.
 
 ### 1. Get user's `id`
 
@@ -107,3 +107,65 @@ The differenct pages are available via `$.links`.
 The next 10 entries are retreived by doing a call to the URL in `$.next`.
 The URL has an `offset` of 10, which means that the next page starts with entry 10.
 You can customize the number of entries per page via the `limit` property as explained in the [documentation](http://docs.kitsu.apiary.io/#introduction/json-api/pagination).
+
+### 3. Interpret the information of each library entry.
+Now, let's have a look at a single library entry.
+You can find an example below.
+```
+{
+  "id": "17641027",
+  "type": "libraryEntries",
+  "links": {
+    "self": "https://kitsu.io/api/edge/library-entries/17641027"
+  },
+  "attributes": {
+    "createdAt": "2017-07-06T02:41:47.483Z",
+    "updatedAt": "2017-07-06T02:41:50.879Z",
+    "status": "current",
+    "progress": 1,
+    "volumesOwned": 0,
+    "reconsuming": false,
+    "reconsumeCount": 0,
+    "notes": null,
+    "private": false,
+    "progressedAt": "2017-07-06T02:41:50.879Z",
+    "startedAt": "2017-07-06T02:41:47.483Z",
+    "finishedAt": null,
+    "rating": "0.0",
+    "ratingTwenty": null
+  },
+  "relationships": {}
+}
+```
+
+The most interesting information for each entry will probably be in the `attributes` object.
+It contains, for example, when an entry was added to the library, when it was finished, and what its rating is.
+Note that currently two ratings are available: `rating` and `ratingTwenty`.
+The former is deprecated and is being replaced by `ratingTwenty`.
+`rating` applies a 0.5/5 system and `ratingTwenty` applies a 2/20 system.
+
+### 4. Get the information about the anime for each entry.
+If you want to get details about the anime for each entry, you will need to look at the `relationships` objects.
+A part of this object of our example looks like this.
+```
+"relationships": {
+  "user": {
+    "links": {
+      "self": "https://kitsu.io/api/edge/library-entries/17641027/relationships/user",
+      "related": "https://kitsu.io/api/edge/library-entries/17641027/user"
+     }
+  },
+  "anime": {
+     "links": {
+        "self": "https://kitsu.io/api/edge/library-entries/17641027/relationships/anime",
+        "related": "https://kitsu.io/api/edge/library-entries/17641027/anime"
+     }
+  },
+  ...
+```
+`user` refers to the user to which this library entry belongs.
+`anime` refers to the anime that is part of this entry.
+
+Note that we are focussing on anime here; however, other media, such as manga can also be part of a library entry.
+
+### 5. Get the Kitsu website link for each Anime.
