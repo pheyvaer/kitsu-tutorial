@@ -231,3 +231,11 @@ Three titles are available for this specific anime.
 You can choose between the English one 'NTR: Netsuzou Trap', the Japanese one '捏造トラップ―NTR―', or the English/Japanese one 'Netsuzou TRap'.
 
 ### 5. Get the Kitsu website link for each Anime.
+
+Finally, we also want to have the Kitsu website link of that anime.
+Every Kitsu anime starts with `https://kitsu.io/anime/`.
+The slug of an anime has to be added to get the full link.
+The slug can be found via `data.attributes.slug`.
+For our example, the slug is 'netsuzou-trap', which results in the link `https://kitsu.io/anime/netsuzou-trap`.
+
+## Recap
