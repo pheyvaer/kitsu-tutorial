@@ -99,7 +99,7 @@ The response is
 }
 
 ```
-Note that the library entries of a specific user can also be retrieved via `https://kitsu.io/api/edge/library-entries?filter[<id>]` with `<id>` the id of the user.
+Note that the library entries of a specific user can also be retrieved via `https://kitsu.io/api/edge/library-entries?filter[userId]=<id>` with `<id>` the id of the user.
 The object `$.data` of the response contains all the entries.
 At the bottom you see that there are 40 entries in total via `$.meta`.
 However, only 10 entries are given in this reponse, as the API uses [pagination](http://docs.kitsu.apiary.io/#introduction/json-api/pagination).
