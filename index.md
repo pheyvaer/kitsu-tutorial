@@ -103,7 +103,7 @@ Note that the library entries of a specific user can also be retrieved via `http
 The object `$.data` of the response contains all the entries.
 At the bottom you see that there are 40 entries in total via `$.meta`.
 However, only 10 entries are given in this reponse, as the API uses [pagination](http://docs.kitsu.apiary.io/#introduction/json-api/pagination).
-The differenct pages are available via `$.links`.
+The different pages are available via `$.links`.
 The next 10 entries are retreived by doing a call to the URL in `$.next`.
 The URL has an `offset` of 10, which means that the next page starts with entry 10.
 You can customize the number of entries per page via the `limit` property as explained in the [documentation](http://docs.kitsu.apiary.io/#introduction/json-api/pagination).
@@ -145,7 +145,7 @@ The former is deprecated and is being replaced by `ratingTwenty`.
 `rating` applies a 0.5/5 system and `ratingTwenty` applies a 2/20 system.
 
 ### 4. Get the information about the anime for each entry.
-If you want to get details about the anime for each entry, you will need to look at the `relationships` objects.
+If you want to get details about the anime for each entry, you will need to look at the `relationships` object.
 A part of this object of our example looks like this.
 ```
 "relationships": {
@@ -166,10 +166,10 @@ A part of this object of our example looks like this.
 `user` refers to the user to which this library entry belongs.
 `anime` refers to the anime that is part of this entry.
 Other relationships are also present, but we wont discuss them here.
-More specific, we are focussing on anime here; however, other media, such as manga can also be part of a library entry.
+More specific, we are focussing on anime, but other media, such as manga can also be part of a library entry.
 
 The `anime` object has a number of links.
-The `self` link refers to the relationships itself, while the `related` link points to the actual anime.
+The `self` link refers to the relationship itself, while the `related` link points to the actual anime.
 
 When we do a GET call to this link, we get the following result.
 ```
@@ -230,7 +230,7 @@ The titles of the anime are available in `data.attributes.titles`.
 Three titles are available for this specific anime.
 You can choose between the English one 'NTR: Netsuzou Trap', the Japanese one '捏造トラップ―NTR―', or the English/Japanese one 'Netsuzou TRap'.
 
-### 5. Get the Kitsu website link for each Anime.
+### 5. Get the Kitsu website link for each anime.
 
 Finally, we also want to have the Kitsu website link of that anime.
 Every Kitsu anime starts with `https://kitsu.io/anime/`.
