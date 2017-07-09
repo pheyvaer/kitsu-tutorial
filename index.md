@@ -39,7 +39,7 @@ Note that you can filter on every element of a `user` object.
 
 Let's take my username `piehey` as an example.
 That would give `https://kitsu.io/api/edge/users?filter[name]=piehey`.
-The JSON response of the call looks like this in my case:
+The JSON response of the call looks like this:
 
 ```
 {
