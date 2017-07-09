@@ -167,6 +167,7 @@ A part of this object of our example looks like this.
      }
   },
   ...
+}
 ```
 
 `user` refers to the user to which this library entry belongs.
@@ -221,7 +222,7 @@ When we do a GET call to this link, we get the following result.
             "nsfw": false
         },
         "relationships": {...}
-
+    }
 }
 ```
 
