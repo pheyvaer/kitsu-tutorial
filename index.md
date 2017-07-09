@@ -10,6 +10,7 @@ The goal is to build an application that shows the library entries of a specific
 ## Focus
 
 We focus on three elements
+
 - [users](http://docs.kitsu.apiary.io/#reference/users),
 - [libraries](http://docs.kitsu.apiary.io/#reference/user-libraries), and
 - [anime series](http://docs.kitsu.apiary.io/#reference/media/anime).
@@ -58,6 +59,7 @@ The JSON response of the call looks like this:
   }
 }
 ```
+
 The `id` of the user can be retreived from the response via `data[0].id`, which is in our example `142706`.
 
 ### 2. Get library entries of user
@@ -66,6 +68,7 @@ The different library entries of a specific user can be retreived via the user's
 
 In our example the call looks like `https://kitsu.io/api/edge/users/142706/library-entries`.
 The response is
+
 ```
 {
   "data": [
@@ -97,8 +100,8 @@ The response is
     "count": 40
   }
 }
-
 ```
+
 Note that the library entries of a specific user can also be retrieved via `https://kitsu.io/api/edge/library-entries?filter[userId]=<id>` with `<id>` the id of the user.
 The object `$.data` of the response contains all the entries.
 At the bottom you see that there are 40 entries in total via `$.meta`.
@@ -111,6 +114,7 @@ You can customize the number of entries per page via the `limit` property as exp
 ### 3. Interpret the information of each library entry.
 Now, let's have a look at a single library entry.
 You can find an example below.
+
 ```
 {
   "id": "17641027",
@@ -147,6 +151,7 @@ The former is deprecated and is being replaced by `ratingTwenty`.
 ### 4. Get the information about the anime for each entry.
 If you want to get details about the anime for each entry, you will need to look at the `relationships` object.
 A part of this object of our example looks like this.
+
 ```
 "relationships": {
   "user": {
@@ -163,6 +168,7 @@ A part of this object of our example looks like this.
   },
   ...
 ```
+
 `user` refers to the user to which this library entry belongs.
 `anime` refers to the anime that is part of this entry.
 Other relationships are also present, but we wont discuss them here.
@@ -172,6 +178,7 @@ The `anime` object has a number of links.
 The `self` link refers to the relationship itself, while the `related` link points to the actual anime.
 
 When we do a GET call to this link, we get the following result.
+
 ```
 {
     "data": {
@@ -220,6 +227,7 @@ When we do a GET call to this link, we get the following result.
 
 As you can see a lot of information is available, but for now we only want to retreive the title of the anime.
 The titles of the anime are available in `data.attributes.titles`.
+
 ```
 "titles": {
     "en": "NTR: Netsuzou Trap",
@@ -227,8 +235,12 @@ The titles of the anime are available in `data.attributes.titles`.
     "ja_jp": "捏造トラップ―NTR―"
 }
 ```
-Three titles are available for this specific anime.
-You can choose between the English one 'NTR: Netsuzou Trap', the Japanese one '捏造トラップ―NTR―', or the English/Japanese one 'Netsuzou TRap'.
+
+Three titles are available for this specific anime. You can choose between:
+
+- English - 'NTR: Netsuzou Trap',
+- Japanese - '捏造トラップ―NTR―',
+- Roumaji - 'Netsuzou TRap'.
 
 ### 5. Get the Kitsu website link for each anime.
 
