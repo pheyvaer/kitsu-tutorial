@@ -227,7 +227,9 @@ When we do a GET call to this link, we get the following result.
 ```
 
 As you can see a lot of information is available, but for now we only want to retreive the title of the anime.
-The titles of the anime are available in `data.attributes.titles`.
+The titles of the anime are available in `data.attributes.canonicalTitle` and `data.attributes.titles`.
+The former is the main title: 'Netsuzou TRap'.
+The latter provides three additional options.
 
 ```
 "titles": {
